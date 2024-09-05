@@ -20,6 +20,37 @@ $recipes = [
         'is_enabled' => false
     ]
 ];
+
+$users = [
+    [
+        'email' => 'besjan@exemple.com',
+        'full_name' => 'Besjan Nom',
+        'age' => 30
+    ],
+];
+
+function isValidRecipe(array $recipe) : bool {
+    return isset($recipe['is_enabled']) && $recipe['is_enabled'];
+}
+
+function getRecipes(array $recipes) : array {
+    $validRecipes = [];
+    foreach ($recipes as $recipe) {
+        if (isValidRecipe($recipe)) {
+            $validRecipes[] = $recipe;
+        }
+    }
+    return $validRecipes;
+}
+
+function displayAuthor(string $authorEmail, array $users) : string {
+    foreach ($users as $user) {
+        if ($authorEmail === $user['email']) {
+            return $user['full_name'] . ' (' . $user['age'] . ' ans)';
+        }
+    }
+    return 'Auteur inconnu'; // Valeur par défaut si l'auteur n'est pas trouvé
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,14 +91,12 @@ $recipes = [
 
     <h1>Affichage des recettes</h1>
 
-    <?php foreach ($recipes as $recipe): ?>
-        <?php if ($recipe['is_enabled']): ?>
-            <div class="recipe">
-                <h2><?php echo $recipe['title']; ?></h2>
-                <p class="instructions"><?php echo $recipe['recipe']; ?></p>
-                <p class="author"><?php echo $recipe['author']; ?></p>
-            </div>
-        <?php endif; ?>
+    <?php foreach (getRecipes($recipes) as $recipe): ?>
+        <div class="recipe">
+            <h2><?php echo htmlspecialchars($recipe['title']); ?></h2>
+            <p class="instructions"><?php echo htmlspecialchars($recipe['recipe']); ?></p>
+            <p class="author"><?php echo htmlspecialchars(displayAuthor($recipe['author'], $users)); ?></p>
+        </div>
     <?php endforeach; ?>
 
 </body>
