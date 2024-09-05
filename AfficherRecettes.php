@@ -49,7 +49,7 @@ function displayAuthor(string $authorEmail, array $users) : string {
             return $user['full_name'] . ' (' . $user['age'] . ' ans)';
         }
     }
-    return 'Auteur inconnu'; // Valeur par défaut si l'auteur n'est pas trouvé
+    return 'Auteur inconnu'; 
 }
 ?>
 
