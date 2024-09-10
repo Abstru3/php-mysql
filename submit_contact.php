@@ -8,6 +8,7 @@ if (
 }
 $email = htmlspecialchars($_POST['email']);
 $message = htmlspecialchars($_POST['message']);
+
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +28,10 @@ $message = htmlspecialchars($_POST['message']);
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Rappel de vos informations</h5>
+            
             <p class="card-text"><b>Email</b> : <?php echo $email; ?> </p>
             <p class="card-text"><b>Message</b> : <?php echo $message; ?> </p>
+
         </div>
     </div>
 </div>
