@@ -15,7 +15,6 @@
     <div class="container">
 
     <?php include_once('header.php'); ?>
-        <h1>Site de recettes</h1>
 
         <!-- inclusion des variables et fonctions -->
         <?php
@@ -23,18 +22,21 @@
             include_once('functions.php');
         ?>
 
-        <!-- inclusion de l'entête du site -->
-        <?php include_once('header.php'); ?>
+        <!-- Inclusion du formulaire de connexion -->
+        <?php include_once('login.php'); ?>
+        <h1>Site de Recettes !</h1>
         
-        <?php foreach(getRecipes($recipes) as $recipe) : ?>
+        <!-- Si l'utilisateur existe, on affiche les recettes -->
+        <?php if(isset($loggedUser)): ?>
+         <?php foreach(getRecipes($recipes) as $recipe) : ?>
             <article>
                 <h3><?php echo $recipe['title']; ?></h3>
                 <div><?php echo $recipe['recipe']; ?></div>
                 <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
             </article>
         <?php endforeach ?>
-    </div>
-
+ <?php endif; ?>
+</div>
     <!-- inclusion du bas de page du site -->
     <?php include_once('footer.php'); ?>
 </body>

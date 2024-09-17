@@ -29,7 +29,7 @@ $users = [
     [
         'email' => 'ethane@exemple.com',
         'full_name' => 'ethane mama',
-        'age' => 85
+        'age' => 85,
     ],
 ];
 
