@@ -1,5 +1,4 @@
 <?php
-// Déclaration du tableau des recettes avec des tableaux associatifs
 $recipes = [
     [
         'title' => 'Cassoulet',
@@ -24,13 +23,17 @@ $recipes = [
 $users = [
     [
         'email' => 'besjan@exemple.com',
-        'full_name' => 'Besjan Nom',
+        'full_name' => 'Besjan KORAQI',
         'age' => 30
     ],
     [
         'email' => 'ethane@exemple.com',
-        'full_name' => 'ethane Nom',
+        'full_name' => 'ethane mama',
         'age' => 85
     ],
 ];
+
+foreach ($users as &$user) {
+    $user['password'] = '0000';
+}
 ?>
